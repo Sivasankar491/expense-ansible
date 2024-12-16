@@ -22,7 +22,7 @@
     
 
   - name: Enable nodejs service
-    ansible.builtin.service"
+    ansible.builtin.service:
       name: "{{item}}"
       state: started
       enabled: yes
