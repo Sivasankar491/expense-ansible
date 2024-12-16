@@ -28,8 +28,8 @@
       url: curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
       dest: /tmp/frontend.zip
   
-  - name: unzrchive the frontend code
-    ansible.builtin.unarhieve:
+  - name: unarchive the frontend code
+    ansible.builtin.unarhive:
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html
       remote_src: yes
