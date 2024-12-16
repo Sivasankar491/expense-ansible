@@ -2,8 +2,8 @@
   hosts: local
   become:  true
   vars:
-    mysql-password: ExpenseApp@1
-    db-host: mysql.kotte.site
+    mysql_password: ExpenseApp@1
+    db_host: mysql.kotte.site
   tasks:
   - name: Install mysql service
     ansible.buitin.package:
@@ -17,8 +17,12 @@
       enabled: yes
 
   - name: chack if the toot password is alrady set
-    ansible.builtin.command: "mysql -h {{db-host}} -u root -p{{mysql-password}}"
+    ansible.builtin.command: "mysql -h {{db_host}} -u root -p{{mysql_password}}"
     register: mysql_info
+
+  - name: print the mysql-info
+    ansible.builtin.debug:
+      msg: "{{mysql_info}}"
 
 
   # - name: Setting up root password
