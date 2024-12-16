@@ -5,6 +5,12 @@
     mysql_password: ExpenseApp@1
     db_host: mysql.kotte.site
   tasks:
+  - name: ansible to install pymysql
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      executable: pip3.9
+      
   - name: Install mysql service
     ansible.builtin.package:
       name: mysql-server
