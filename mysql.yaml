@@ -1,0 +1,27 @@
+- name: Create mysql server for expense project
+  hosts: local
+  become:  true
+  vars:
+    mysql-password: ExpenseApp@1
+    db-host: mysql.kotte.site
+  tasks:
+  - name: Install mysql service
+    ansible.buitin.package:
+      name: mysql-server
+      state: presnt
+  
+  - name:  Start and enable the mysql service
+    ansible.builtin.service:
+      name: mysqld
+      state: started
+      enabled: yes
+
+  - name: chack if the toot password is alrady set
+    ansible.builtin.command: "mysql -h {{db-host}} -u root -p{{mysql-password}}"
+    register: mysql_info
+
+
+  # - name: Setting up root password
+  #   ansible.builtin.command: "mysql_secure_installation --set-root-pass {{mysql-password}}"
+
+  
