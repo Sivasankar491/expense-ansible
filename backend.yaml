@@ -14,18 +14,20 @@
   - name: Enable nodeJS 20
     ansible.builtin.command: dnf module enable nodejs:20 -y
 
-  - name: Enable nodejs service
-    ansible.builtin.service"
-      name: nodejs
-      state: started
-      enabled: yes
-
   - name: Install nodeJS 
     ansible.builtin.package:
       name: "{{item}}"
       state: present
     loop: "{{packages}}"
     
+
+  - name: Enable nodejs service
+    ansible.builtin.service"
+      name: "{{item}}"
+      state: started
+      enabled: yes
+    loop: "{{packages}}"
+
   - name: create expense user
     ansible.builtin.user:
       name: expense
