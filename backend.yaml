@@ -1,0 +1,27 @@
+- name: Prepare backend server for Expens eproject
+  hosts: backend.kotte.site
+  become: true
+  vars:
+    mysql_password: ExpenseApp@1
+    db_host: mysql.kotte.site
+  tasks:
+  - name: Disable default nodeJS
+    ansible.builtin.command: dnf module disable nodejs -y
+
+  - name: Enable nodeJS 20
+    ansible.builtin.commans: dnf module enable nodejs:20 -y
+
+  - name: Install nodeJS 
+    ansible.builtin.package:
+      name: "{{item}}"
+      state: present
+    loop:
+    - nodejs
+    - mysql
+
+  - name: create expense user
+    ansible.builtin.user:
+      name: expense
+  
+  
+  
