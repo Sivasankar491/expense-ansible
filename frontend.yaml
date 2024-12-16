@@ -29,11 +29,11 @@
       dest: /tmp/frontend.zip
   
   - name: unarchive the frontend code
-    ansible.builtin.unarhive:
+    ansible.builtin.unarchive:
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html
       remote_src: yes
-    
+
   - name: copy expense conf
     ansible.builtin.copy:
       src: expense.conf
