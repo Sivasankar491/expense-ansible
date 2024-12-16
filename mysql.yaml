@@ -1,5 +1,5 @@
 - name: Create mysql server for expense project
-  hosts: local
+  hosts: mysql
   become:  true
   vars:
     mysql_password: ExpenseApp@1
