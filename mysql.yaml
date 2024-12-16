@@ -6,7 +6,7 @@
     db_host: mysql.kotte.site
   tasks:
   - name: Install mysql service
-    ansible.buitin.package:
+    ansible.builtin.package:
       name: mysql-server
       state: presnt
   
