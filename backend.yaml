@@ -1,5 +1,5 @@
 - name: Prepare backend server for Expens eproject
-  hosts: backend.kotte.site
+  hosts: backend
   become: true
   vars:
     packages:
